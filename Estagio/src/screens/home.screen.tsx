@@ -1,5 +1,10 @@
 import React from 'react';
-import {SafeAreaView, StatusBar} from 'react-native';
+import {
+  Keyboard,
+  SafeAreaView,
+  StatusBar,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import styled from 'styled-components/native';
 import Search from '../components/search.component';
 
@@ -23,10 +28,12 @@ interface Props {
 
 export const Home: React.FC<Props> = ({navigation}) => {
   return (
-    <SafeArea>
-      <Container>
-        <Search navigation={navigation} />
-      </Container>
-    </SafeArea>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <SafeArea>
+        <Container>
+          <Search navigation={navigation} />
+        </Container>
+      </SafeArea>
+    </TouchableWithoutFeedback>
   );
 };
