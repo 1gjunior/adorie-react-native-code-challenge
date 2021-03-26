@@ -23,6 +23,10 @@ const Search: React.FC<Props> = ({navigation}) => {
   const onChangeSearch = (query: React.SetStateAction<string>) =>
     setSearchQuery(query);
 
+  const navigateTo = (screen: string) => {
+    navigation.navigate(screen);
+  };
+
   return (
     <>
       <SearchTitle>Unsplash</SearchTitle>
@@ -31,7 +35,10 @@ const Search: React.FC<Props> = ({navigation}) => {
         onChangeText={onChangeSearch}
         value={searchQuery}
         onIconPress={() => {
-          searchQuery && navigation.navigate('Photos');
+          searchQuery && navigateTo('Photos');
+        }}
+        onSubmitEditing={() => {
+          searchQuery && navigateTo('Photos');
         }}
       />
     </>
